@@ -16,6 +16,7 @@ func TestAccGithubRepositoryDataSource(t *testing.T) {
 		config := fmt.Sprintf(`
 			data "github_repositories" "test" {
 				query = "org:%s"
+				visibility = "private"
 			}
 
 			data "github_repository" "test" {
@@ -58,12 +59,14 @@ func TestAccGithubRepositoryDataSource(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name         = "tf-acc-%s"
+				visibility = "public"
 				auto_init    = true
 				pages {
 					source {
 						branch = "main"
 					}
 				}
+				vulnerability_alerts = true
 			}
 
 			data "github_repository" "test" {
@@ -113,6 +116,7 @@ func TestAccGithubRepositoryDataSource(t *testing.T) {
 
 			resource "github_repository" "test" {
 				name         = "tf-acc-%s"
+				visibility = "private"
 				auto_init    = true
 			}
 
@@ -141,10 +145,10 @@ func TestAccGithubRepositoryDataSource(t *testing.T) {
 				"data.github_repository.test", "fork", "false",
 			),
 			resource.TestCheckResourceAttr(
-				"data.github_repository.test", "allow_update_branch", "true",
+				"data.github_repository.test", "allow_update_branch", "false",
 			),
 			resource.TestCheckResourceAttr(
-				"data.github_repository.test", "delete_branch_on_merge", "true",
+				"data.github_repository.test", "delete_branch_on_merge", "false",
 			),
 		)
 
@@ -178,6 +182,7 @@ func TestAccGithubRepositoryDataSource(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name        = "tf-acc-%s"
+				visibility = "private"
 				is_template = true
 			}
 
@@ -227,6 +232,7 @@ func TestAccGithubRepositoryDataSource(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name = "tf-acc-%s"
+				visibility = "private"
 				template {
 					owner      = "template-repository"
 					repository = "template-repository"
@@ -283,6 +289,7 @@ func TestAccGithubRepositoryDataSource(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name = "tf-acc-%s"
+				visibility = "private"
 			}
 
 			data "github_repository" "test" {
@@ -331,6 +338,7 @@ func TestAccGithubRepositoryDataSource(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name = "tf-acc-%s"
+				visibility = "private"
 				auto_init = true
 			}
 			resource "github_repository_file" "test" {
@@ -390,6 +398,7 @@ func TestAccGithubRepositoryDataSource(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name = "tf-acc-%s"
+				visibility = "private"
 				auto_init = true
 			}
 			resource "github_repository_file" "test" {

@@ -21,6 +21,7 @@ func TestAccGithubCodespacesSecret(t *testing.T) {
 
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
+			  visibility = "private"
 			}
 
 			data "github_codespaces_public_key" "test_pk" {
@@ -72,6 +73,7 @@ func TestAccGithubCodespacesSecret(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
+			  visibility = "private"
 			}
 
 			resource "github_codespaces_secret" "plaintext_secret" {
@@ -162,6 +164,7 @@ func TestAccGithubCodespacesSecret(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 			  name = "%s"
+			  visibility = "private"
 			}
 			resource "github_codespaces_secret" "plaintext_secret" {
 			  repository       = github_repository.test.name
@@ -254,6 +257,7 @@ func TestAccGithubCodespacesSecret(t *testing.T) {
 		config := fmt.Sprintf(`
 				resource "github_repository" "test" {
 					name = "tf-acc-test-%s"
+					visibility = "private"
 				}
 
 				resource "github_codespaces_secret" "plaintext_secret" {

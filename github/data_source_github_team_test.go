@@ -236,6 +236,7 @@ func TestAccGithubTeamDataSource(t *testing.T) {
 			}
 			resource "github_repository" "test" {
 				name = "tf-acc-test"
+				visibility = "private"
 			}
 			resource "github_team_repository" "test" {
 				team_id    = github_team.test.id

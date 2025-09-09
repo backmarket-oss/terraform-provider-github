@@ -11,17 +11,15 @@ import (
 )
 
 func TestAccGithubRepositoryFile(t *testing.T) {
-
-	randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
-
 	t.Run("creates and manages files", func(t *testing.T) {
-
+		randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
 		config := fmt.Sprintf(`
 	
 			resource "github_repository" "test" {
 				name                 = "tf-acc-test-%s"
 				auto_init            = true
 				vulnerability_alerts = true
+				visibility = "private"
 			}
 	
 			resource "github_repository_file" "test" {
@@ -92,12 +90,13 @@ func TestAccGithubRepositoryFile(t *testing.T) {
 	})
 
 	t.Run("can be configured to overwrite files on create", func(t *testing.T) {
-
+		randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 			  name                 = "tf-acc-test-%s"
 			  auto_init            = true
               vulnerability_alerts = true
+			  visibility = "private"
 			}
 
 			resource "github_repository_file" "test" {
@@ -173,28 +172,17 @@ func TestAccGithubRepositoryFile(t *testing.T) {
 	})
 
 	t.Run("creates and manages files on default branch if branch is omitted", func(t *testing.T) {
-
+		randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
 		config := fmt.Sprintf(`
 
 			resource "github_repository" "test" {
 				name                 = "tf-acc-test-%s"
 				auto_init            = true
 				vulnerability_alerts = true
-			}
-
-			resource "github_branch" "test" {
-				repository = github_repository.test.name
-				branch     = "test"
-			}
-
-			resource "github_branch_default" "default"{
-				repository = github_repository.test.name
-				branch     = github_branch.test.branch
+				visibility = "private"
 			}
 
 			resource "github_repository_file" "test" {
-				depends_on  = [github_branch_default.default]
-
 				repository     = github_repository.test.name
 				file           = "test"
 				content        = "bar"
@@ -215,7 +203,7 @@ func TestAccGithubRepositoryFile(t *testing.T) {
 			),
 			resource.TestCheckResourceAttr(
 				"github_repository_file.test", "ref",
-				"test",
+				"main",
 			),
 			resource.TestCheckResourceAttrSet(
 				"github_repository_file.test", "commit_author",
@@ -262,12 +250,13 @@ func TestAccGithubRepositoryFile(t *testing.T) {
 	})
 
 	t.Run("creates and manages files on auto created branch if branch does not exist", func(t *testing.T) {
-
+		randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name                 = "tf-acc-test-%s"
 				auto_init            = true
 				vulnerability_alerts = true
+				visibility = "private"
 			}
 	
 			resource "github_repository_file" "test" {

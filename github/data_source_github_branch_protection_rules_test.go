@@ -17,6 +17,7 @@ func TestAccGithubBranchProtectionRulesDataSource(t *testing.T) {
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%[1]s"
 				auto_init = true
+				visibility = "private"
 			}
 
 			data "github_branch_protection_rules" "all" {
@@ -46,7 +47,7 @@ func TestAccGithubBranchProtectionRulesDataSource(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account using free plan not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -62,6 +63,7 @@ func TestAccGithubBranchProtectionRulesDataSource(t *testing.T) {
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%[1]s"
 				auto_init = true
+				visibility = "private"
 			}
 
 			resource "github_branch_protection" "protection" {
@@ -102,7 +104,7 @@ func TestAccGithubBranchProtectionRulesDataSource(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account using free plan not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {

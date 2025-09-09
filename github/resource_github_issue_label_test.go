@@ -23,6 +23,7 @@ func TestAccGithubIssueLabel(t *testing.T) {
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
 				auto_init = true
+				visibility = "private"
 			}
 
 			resource "github_issue_label" "test" {

@@ -21,6 +21,7 @@ func TestAccGithubActionsEnvironmentVariable(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
+			  visibility = "private"
 			}
 
 			resource "github_repository_environment" "test" {
@@ -99,6 +100,7 @@ func TestAccGithubActionsEnvironmentVariable(t *testing.T) {
 		config := fmt.Sprintf(`
 				resource "github_repository" "test" {
 					name = "tf-acc-test-%s"
+					visibility = "private"
 				}
 
 				resource "github_repository_environment" "test" {
@@ -149,6 +151,7 @@ func TestAccGithubActionsEnvironmentVariable(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
+			  visibility = "private"
 			}
 
 			resource "github_repository_environment" "test" {

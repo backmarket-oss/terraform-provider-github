@@ -17,6 +17,7 @@ func TestAccGithubRepositoryEnvironmentsDataSource(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%[1]s"
+			  visibility = "private"
 				auto_init = true
 			}
 			resource "github_repository_environment" "env1" {

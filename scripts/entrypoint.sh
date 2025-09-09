@@ -44,7 +44,7 @@ test_cases () {
 
 run_test () {
   # FIXME: Running one test case per UNIX process yields less flaky results
-  TF_LOG=${INPUT_TF_LOG} TF_ACC=1 go test -v -timeout 30m  ./... -run $1
+  TF_ACC=1 go test -v -timeout 30m  ./... -run $1
   return $?
 }
 
@@ -76,7 +76,7 @@ main () {
   go test -v -sweep="gh-region"
 
   # Output failed test cases
-  echo "::set-output name=failed::$(failed_test_cases)"
+  echo $(failed_test_cases)
 
   # Exit with a failure if any test cases failed
   for failed_test_case in $(env | grep "test_case_failed_"); do

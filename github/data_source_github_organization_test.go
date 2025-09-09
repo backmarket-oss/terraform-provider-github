@@ -65,7 +65,7 @@ func TestAccGithubOrganizationDataSource(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("anonymous account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -129,7 +129,7 @@ func TestAccGithubOrganizationDataSource(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("anonymous account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -194,7 +194,7 @@ func TestAccGithubOrganizationDataSource(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("anonymous account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {

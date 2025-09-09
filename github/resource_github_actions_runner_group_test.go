@@ -22,6 +22,7 @@ func TestAccGithubActionsRunnerGroup(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
+			  visibility = "private"
 			  vulnerability_alerts = false
 			  auto_init = true
 			}
@@ -29,11 +30,6 @@ func TestAccGithubActionsRunnerGroup(t *testing.T) {
 			resource "github_branch" "test" {
 			  repository = github_repository.test.name
 			  branch     = "test"
-			}
-
-			resource "github_branch_default" "default"{
-			  repository = github_repository.test.name
-			  branch     = github_branch.test.branch
 			}
 
 			resource "github_repository_file" "workflow_file" {
@@ -133,6 +129,7 @@ func TestAccGithubActionsRunnerGroup(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
+			  visibility = "private"
 			}
 
 			resource "github_actions_runner_group" "test" {
@@ -193,6 +190,7 @@ func TestAccGithubActionsRunnerGroup(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
+			  visibility = "private"
 			}
 
 			resource "github_actions_runner_group" "test" {
@@ -297,6 +295,7 @@ func TestAccGithubActionsRunnerGroup(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name = "tf-acc-test-%s"
+				visibility = "private"
 			}
 
 			resource "github_actions_runner_group" "test" {
@@ -336,7 +335,7 @@ func TestAccGithubActionsRunnerGroup(t *testing.T) {
 		}
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account using free plan not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {

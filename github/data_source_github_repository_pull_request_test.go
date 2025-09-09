@@ -16,6 +16,7 @@ func TestAccGithubRepositoryPullRequestDataSource(t *testing.T) {
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
 				auto_init = true
+				visibility = "private"
 			}
 
 			resource "github_branch" "test" {

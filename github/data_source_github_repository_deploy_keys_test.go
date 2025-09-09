@@ -17,6 +17,7 @@ func TestAccGithubRepositoryDeployKeysDataSource(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name      = "%s"
+				visibility = "private"
 				auto_init = true
 			}
 

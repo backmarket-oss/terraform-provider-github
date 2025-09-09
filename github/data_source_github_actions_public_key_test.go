@@ -18,6 +18,7 @@ func TestAccGithubActionsPublicKeyDataSource(t *testing.T) {
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%[1]s"
 				auto_init = true
+				visibility = "private"
 			}
 
 			data "github_actions_public_key" "test" {

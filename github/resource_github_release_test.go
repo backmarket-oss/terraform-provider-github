@@ -2,9 +2,10 @@ package github
 
 import (
 	"fmt"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	"log"
 	"testing"
+
+	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
@@ -21,6 +22,7 @@ func TestAccGithubReleaseResource(t *testing.T) {
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "private"
 			}
 
 			resource "github_release" "test" {
@@ -100,6 +102,7 @@ func TestAccGithubReleaseResource(t *testing.T) {
 			resource "github_repository" "test" {
 				name = "tf-acc-test-%s"
 				auto_init = true
+				visibility = "private"
 			}
 
 			resource "github_branch" "test" {

@@ -16,6 +16,7 @@ func TestAccGithubActionsEnvironmentSecretsDataSource(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
+				visibility = "private"
 				auto_init = true
 			}
 

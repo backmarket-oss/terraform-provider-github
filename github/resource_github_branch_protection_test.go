@@ -22,6 +22,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 		resource "github_repository" "test" {
 		  name      = "tf-acc-test-%s"
 		  auto_init = true
+		  visibility = "public"
+		  vulnerability_alerts = true
 		}
 
 		resource "github_branch_protection" "test" {
@@ -110,6 +112,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 		resource "github_repository" "test" {
 		  name      = "tf-acc-test-%s"
 		  auto_init = true
+		  visibility = "public"
+		  vulnerability_alerts = true
 		}
 
 		resource "github_branch_protection" "test" {
@@ -202,6 +206,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 			resource "github_repository" "test" {
 			  name      = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "public"
+			  vulnerability_alerts = true
 			}
 
 			resource "github_branch_protection" "test" {
@@ -275,6 +281,9 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 			resource "github_repository" "test" {
 			  name      = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "public"
+			  vulnerability_alerts = true
+
 			}
 
 			resource "github_branch_protection" "test" {
@@ -344,6 +353,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 			resource "github_repository" "test" {
 			  name      = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "public"
+			  vulnerability_alerts = true
 			}
 
 			resource "github_branch_protection" "test" {
@@ -401,6 +412,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 			resource "github_repository" "test" {
 			  name      = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "public"
+			  vulnerability_alerts = true
 			}
 
 			data "github_user" "test" {
@@ -467,6 +480,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 			resource "github_repository" "test" {
 			  name      = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "public"
+			  vulnerability_alerts = true
 			}
 
 			resource "github_branch_protection" "test" {
@@ -528,6 +543,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 			resource "github_repository" "test" {
 			  name      = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "public"
+			  vulnerability_alerts = true
 			}
 
 			resource "github_branch_protection" "test" {
@@ -587,6 +604,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 			resource "github_repository" "test" {
 			  name      = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "public"
+			  vulnerability_alerts = true
 			}
 
 			data "github_user" "test" {
@@ -648,6 +667,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 			resource "github_repository" "test" {
 			  name      = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "public"
+			  vulnerability_alerts = true
 			}
 
 			data "github_user" "test" {
@@ -708,6 +729,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 			resource "github_repository" "test" {
 			  name      = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "public"
+			  vulnerability_alerts = true
 			}
 
 			resource "github_team" "test" {
@@ -768,6 +791,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 			resource "github_repository" "test" {
 			  name      = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "public"
+			  vulnerability_alerts = true
 			}
 
 			resource "github_branch_protection" "test" {
@@ -823,6 +848,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 			resource "github_repository" "test" {
 			  name      = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "public"
+			  vulnerability_alerts = true
 			}
 
 			resource "github_branch_protection" "test" {
@@ -881,6 +908,8 @@ func TestAccGithubBranchProtectionV4(t *testing.T) {
 			resource "github_repository" "test" {
 			  name      = "tf-acc-test-%s"
 			  auto_init = true
+			  visibility = "public"
+			  vulnerability_alerts = true
 			}
 
 			resource "github_branch_protection" "test" {
