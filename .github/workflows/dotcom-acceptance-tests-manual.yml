@@ -31,7 +31,7 @@ jobs:
       - name: Failed Acceptance Tests (Anonymous)
         if: ${{ failure() }}
         run: ./scripts/entrypoint.sh
-        with:
+        env:
           RUN_ALL: 'true'
           TF_LOG: DEBUG
           GITHUB_BASE_URL: https://api.github.com/
@@ -70,7 +70,7 @@ jobs:
         id: acceptance-tests-individual
         run: ./scripts/entrypoint.sh
         if: ${{ failure() }}
-        with:
+        env:
           RUN_ALL: 'true'
           TF_LOG: DEBUG
           GITHUB_OWNER: stegayet
@@ -110,7 +110,7 @@ jobs:
       - name: Failed Acceptance Tests (Organization)
         run: ./scripts/entrypoint.sh
         if: ${{ failure() }}
-        with:
+        env:
           RUN_ALL: 'true'
           TF_LOG: DEBUG
           GITHUB_BASE_URL: https://api.github.com/
