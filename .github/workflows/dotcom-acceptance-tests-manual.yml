@@ -7,7 +7,6 @@ jobs:
 
   acceptance-tests-anonymous:
     runs-on: ubuntu-latest
-    if: contains(join(github.event.pull_request.labels.*.name, ', '), 'test/')
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -45,7 +44,6 @@ jobs:
 
   acceptance-tests-individual:
     runs-on: ubuntu-latest
-    if: contains(join(github.event.pull_request.labels.*.name, ', '), 'test')
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -85,7 +83,6 @@ jobs:
 
   acceptance-tests-organization:
     runs-on: ubuntu-latest
-    if: contains(join(github.event.pull_request.labels.*.name, ', '), 'test')
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
