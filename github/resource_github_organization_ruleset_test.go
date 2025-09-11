@@ -10,13 +10,6 @@ import (
 )
 
 func TestGithubOrganizationRulesets(t *testing.T) {
-	if isEnterprise != "true" {
-		t.Skip("Skipping because `ENTERPRISE_ACCOUNT` is not set or set to false")
-	}
-
-	if testEnterprise == "" {
-		t.Skip("Skipping because `ENTERPRISE_SLUG` is not set")
-	}
 
 	randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
 
@@ -113,8 +106,8 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 			})
 		}
 
-		t.Run("with an enterprise account", func(t *testing.T) {
-			testCase(t, enterprise)
+		t.Run("with an organization account", func(t *testing.T) {
+			testCase(t, organization)
 		})
 
 	})
@@ -172,8 +165,8 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 			})
 		}
 
-		t.Run("with an enterprise account", func(t *testing.T) {
-			testCase(t, enterprise)
+		t.Run("with an organization account", func(t *testing.T) {
+			testCase(t, organization)
 		})
 
 	})
@@ -254,8 +247,8 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 			})
 		}
 
-		t.Run("with an enterprise account", func(t *testing.T) {
-			testCase(t, enterprise)
+		t.Run("with an organization account", func(t *testing.T) {
+			testCase(t, organization)
 		})
 
 	})
