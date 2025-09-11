@@ -10,13 +10,6 @@ import (
 )
 
 func TestGithubOrganizationRulesets(t *testing.T) {
-	if isEnterprise != "true" {
-		t.Skip("Skipping because `ENTERPRISE_ACCOUNT` is not set or set to false")
-	}
-
-	if testEnterprise == "" {
-		t.Skip("Skipping because `ENTERPRISE_SLUG` is not set")
-	}
 
 	randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
 
@@ -30,6 +23,10 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 
 				conditions {
 					ref_name {
+						include = ["~ALL"]
+						exclude = []
+					}
+					repository_name {
 						include = ["~ALL"]
 						exclude = []
 					}
@@ -62,13 +59,6 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 						strict_required_status_checks_policy = true
 					}
 
-					required_workflows {
-						required_workflow {
-							path          = "path/to/workflow.yaml"
-							repository_id = 1234
-						}
-					}
-
 					required_code_scanning {
 					  required_code_scanning_tool {
 						alerts_threshold = "errors"
@@ -92,7 +82,7 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 		check := resource.ComposeTestCheckFunc(
 			resource.TestCheckResourceAttr(
 				"github_organization_ruleset.test", "name",
-				"test",
+				fmt.Sprintf("test-%s", randomID),
 			),
 			resource.TestCheckResourceAttr(
 				"github_organization_ruleset.test", "enforcement",
@@ -113,8 +103,8 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 			})
 		}
 
-		t.Run("with an enterprise account", func(t *testing.T) {
-			testCase(t, enterprise)
+		t.Run("with an organization account", func(t *testing.T) {
+			testCase(t, organization)
 		})
 
 	})
@@ -172,8 +162,8 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 			})
 		}
 
-		t.Run("with an enterprise account", func(t *testing.T) {
-			testCase(t, enterprise)
+		t.Run("with an organization account", func(t *testing.T) {
+			testCase(t, organization)
 		})
 
 	})
@@ -188,6 +178,10 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 
 				conditions {
 					ref_name {
+						include = ["~ALL"]
+						exclude = []
+					}
+					repository_name {
 						include = ["~ALL"]
 						exclude = []
 					}
@@ -254,8 +248,8 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 			})
 		}
 
-		t.Run("with an enterprise account", func(t *testing.T) {
-			testCase(t, enterprise)
+		t.Run("with an organization account", func(t *testing.T) {
+			testCase(t, organization)
 		})
 
 	})
