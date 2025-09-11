@@ -1,4 +1,6 @@
-#!/bin/bash -l
+#!/usr/bin/bash 
+
+set -euo pipefail
 
 # Acceptance Test Functions
 
@@ -24,14 +26,14 @@ test_cases_from_modified_files () {
     return
   else
     grep -nr "func Test" $(test_files_for_modified_files) | \
-    cut -d ' ' -f 2 | cut -d "(" -f 1 | grep -e TestAcc -e TestProvider | \
+    cut -d ' ' -f 2 | cut -d "(" -f 1 | \
     tr '\n' ' '
   fi
 }
 
 all_test_cases () {
   grep -nr "func Test" . | \
-  cut -d ' ' -f 2 | cut -d "(" -f 1 | grep -e TestAcc -e TestProvider | \
+  cut -d ' ' -f 2 | cut -d "(" -f 1 | \
   tr '\n' ' '
 }
 
