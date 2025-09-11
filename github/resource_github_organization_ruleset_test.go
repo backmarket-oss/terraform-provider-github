@@ -26,6 +26,10 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 						include = ["~ALL"]
 						exclude = []
 					}
+					repository_name {
+						include = ["~ALL"]
+						exclude = []
+					}
 				}
 
 				rules {
@@ -181,6 +185,10 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 
 				conditions {
 					ref_name {
+						include = ["~ALL"]
+						exclude = []
+					}
+					repository_name {
 						include = ["~ALL"]
 						exclude = []
 					}
