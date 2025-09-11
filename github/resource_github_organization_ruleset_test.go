@@ -82,7 +82,7 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 		check := resource.ComposeTestCheckFunc(
 			resource.TestCheckResourceAttr(
 				"github_organization_ruleset.test", "name",
-				"test",
+				fmt.Sprintf("test-%s", randomID),
 			),
 			resource.TestCheckResourceAttr(
 				"github_organization_ruleset.test", "enforcement",
