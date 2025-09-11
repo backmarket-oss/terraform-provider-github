@@ -173,6 +173,13 @@ func resourceGithubOrganizationRuleset() *schema.Resource {
 							Optional:    true,
 							Description: "Only allow users with bypass permission to update matching refs.",
 						},
+						"update_allows_fetch_and_merge": {
+							Type:         schema.TypeBool,
+							Optional:     true,
+							Default:      false,
+							RequiredWith: []string{"rules.0.update"},
+							Description:  "Branch can pull changes from its upstream repository. This is only applicable to forked repositories. Requires `update` to be set to `true`.",
+						},
 						"deletion": {
 							Type:        schema.TypeBool,
 							Optional:    true,
