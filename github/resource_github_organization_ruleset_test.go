@@ -59,13 +59,6 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 						strict_required_status_checks_policy = true
 					}
 
-					required_workflows {
-						required_workflow {
-							path          = "path/to/workflow.yaml"
-							repository_id = 1234
-						}
-					}
-
 					required_code_scanning {
 					  required_code_scanning_tool {
 						alerts_threshold = "errors"
