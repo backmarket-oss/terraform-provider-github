@@ -8,8 +8,9 @@ generate_test_fixtures () {
     -keyout github/test-fixtures/key.pem -out github/test-fixtures/cert.pem
 }
 
+# GITHUB_BASE_REF and GITHUB_HEAD_REF are automatically set by GitHub Actions
 modified_files () {
-  git show --pretty="" --name-only HEAD | tr '\n' ' '
+  git diff --name-only origin/$GITHUB_BASE_REF...origin/$GITHUB_HEAD_REF | tr '\n' ' '
 }
 
 test_files_for_modified_files () {
