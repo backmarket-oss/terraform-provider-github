@@ -75,6 +75,7 @@ func testAccCheckGithubCollaboratorsDataSourcePermissionConfig(repo string) stri
 	return fmt.Sprintf(`
 resource "github_repository" "test" {
   name = "%s"
+  visibility = "private"
 }
 
 data "github_collaborators" "test" {

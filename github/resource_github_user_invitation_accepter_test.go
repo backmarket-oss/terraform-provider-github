@@ -42,6 +42,11 @@ func TestAccGithubUserInvitationAccepter_basic(t *testing.T) {
 func TestAccGithubUserInvitationAccepterAllowEmptyId(t *testing.T) {
 	rn := "github_user_invitation_accepter.test"
 
+	githubOwner := os.Getenv("GITHUB_OWNER")
+	if githubOwner == "" {
+		t.Skip("GITHUB_OWNER was not provided, skipping test")
+	}
+
 	var providers []*schema.Provider
 
 	resource.ParallelTest(t, resource.TestCase{
@@ -77,6 +82,7 @@ provider "github" {
 
 resource "github_repository" "test" {
   provider = "github.main"
+  visibility = "private"
   name     = "%s"
 }
 

@@ -19,21 +19,22 @@ func TestAccGithubRepositoryMilestoneDataSource(t *testing.T) {
 
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
+				visibility = "private"
 			}
 
 			resource "github_repository_milestone" "test" {
 				owner = split("/", "${github_repository.test.full_name}")[0]
 				repository = github_repository.test.name
-		    title = "v1.0.0"
-		    description = "General Availability"
-		    due_date = "2020-11-22"
-		    state = "closed"
+				title = "v1.0.0"
+				description = "General Availability"
+				due_date = "2020-11-22"
+				state = "closed"
 			}
 
 			data "github_repository_milestone" "test" {
 				owner = github_repository_milestone.test.owner
 				repository = github_repository_milestone.test.repository
-		   	number = github_repository_milestone.test.number
+		   		number = github_repository_milestone.test.number
 			}
 
 		`, randomID)

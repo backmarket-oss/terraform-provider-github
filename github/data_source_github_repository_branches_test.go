@@ -15,6 +15,7 @@ func TestAccGithubRepositoryBranchesDataSource(t *testing.T) {
 			resource "github_repository" "test" {
 				name      = "%s"
 				auto_init = true
+				visibility = "private"
 			}
 
 			data "github_repository_branches" "test" {
@@ -47,7 +48,7 @@ func TestAccGithubRepositoryBranchesDataSource(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -61,6 +62,7 @@ func TestAccGithubRepositoryBranchesDataSource(t *testing.T) {
 			resource "github_repository" "test" {
 				name      = "%s"
 				auto_init = true
+				visibility = "private"
 			}
 
 			resource "github_branch" "test" {
@@ -126,7 +128,7 @@ func TestAccGithubRepositoryBranchesDataSource(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {

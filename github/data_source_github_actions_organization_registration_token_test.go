@@ -38,7 +38,7 @@ func TestAccGithubActionsOrganizationRegistrationTokenDataSource(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {

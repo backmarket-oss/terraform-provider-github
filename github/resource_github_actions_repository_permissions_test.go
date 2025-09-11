@@ -20,6 +20,7 @@ func TestAccGithubActionsRepositoryPermissions(t *testing.T) {
 				name        = "tf-acc-test-topic-%[1]s"
 				description = "Terraform acceptance tests %[1]s"
 				topics		= ["terraform", "testing"]
+				visibility = "private"	
 			}
 
 			resource "github_actions_repository_permissions" "test" {
@@ -73,6 +74,8 @@ func TestAccGithubActionsRepositoryPermissions(t *testing.T) {
 				name        = "tf-acc-test-topic-%[1]s"
 				description = "Terraform acceptance tests %[1]s"
 				topics		= ["terraform", "testing"]
+				visibility = "public"
+				vulnerability_alerts = true
 			}
 
 			resource "github_actions_repository_permissions" "test" {
@@ -139,6 +142,8 @@ func TestAccGithubActionsRepositoryPermissions(t *testing.T) {
 				name        = "tf-acc-test-topic-%[1]s"
 				description = "Terraform acceptance tests %[1]s"
 				topics		= ["terraform", "testing"]
+				visibility = "public"
+				vulnerability_alerts = true
 			}
 
 			resource "github_actions_repository_permissions" "test" {
@@ -198,6 +203,7 @@ func TestAccGithubActionsRepositoryPermissions(t *testing.T) {
 				name        = "tf-acc-test-topic-%[1]s"
 				description = "Terraform acceptance tests %[1]s"
 				topics		= ["terraform", "testing"]
+				visibility = "private"
 			}
 
 			resource "github_actions_repository_permissions" "test" {
@@ -254,6 +260,7 @@ func TestAccGithubActionsRepositoryPermissions(t *testing.T) {
 				name        = "tf-acc-test-topic-%[1]s"
 				description = "Terraform acceptance tests %[1]s"
 				topics		= ["terraform", "testing"]
+				visibility = "private"
 			}
 
 			resource "github_actions_repository_permissions" "test" {
@@ -308,6 +315,7 @@ func TestAccGithubActionsRepositoryPermissions(t *testing.T) {
 				name        = "tf-acc-test-actions-permissions-%[1]s"
 				description = "Terraform acceptance tests %[1]s"
 				topics		= ["terraform", "testing"]
+				visibility = "private"
 			}
 
 			resource "github_actions_repository_permissions" "test" {

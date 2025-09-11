@@ -60,6 +60,7 @@ func TestAccGithubActionsOrganizationPermissions(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name        = "tf-acc-test-topic-%[1]s"
+				visibility = "private"
 				description = "Terraform acceptance tests %[1]s"
 				topics			= ["terraform", "testing"]
 			}
@@ -221,12 +222,14 @@ func TestAccGithubActionsOrganizationPermissions(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name        = "tf-acc-test-topic-%[1]s"
+				visibility = "private"
 				description = "Terraform acceptance tests %[1]s"
 				topics			= ["terraform", "testing"]
 			}
 
 			resource "github_repository" "test2" {
 				name        = "tf-acc-test-topic-%[2]s"
+				visibility = "private"
 				description = "Terraform acceptance tests %[2]s"
 				topics			= ["terraform", "testing"]
 			}

@@ -18,6 +18,7 @@ func TestAccGithubRepositoryWebhook(t *testing.T) {
 			resource "github_repository" "test" {
 			  name         = "test-%[1]s"
 			  description  = "Terraform acceptance tests"
+			  visibility = "private"
 			}
 
 			resource "github_repository_webhook" "test" {
@@ -76,6 +77,7 @@ func TestAccGithubRepositoryWebhook(t *testing.T) {
 			resource "github_repository" "test" {
 				name         = "test-%[1]s"
 				description  = "Terraform acceptance tests"
+				visibility = "private"
 			}
 
 			resource "github_repository_webhook" "test" {
@@ -132,6 +134,7 @@ func TestAccGithubRepositoryWebhook(t *testing.T) {
 				resource "github_repository" "test" {
 				  name         = "test-%[1]s"
 				  description  = "Terraform acceptance tests"
+				  visibility = "private"
 				}
 
 				resource "github_repository_webhook" "test" {
@@ -151,6 +154,7 @@ func TestAccGithubRepositoryWebhook(t *testing.T) {
 				resource "github_repository" "test" {
 				  name         = "test-%[1]s"
 				  description  = "Terraform acceptance tests"
+				  visibility = "private"
 				}
 
 				resource "github_repository_webhook" "test" {

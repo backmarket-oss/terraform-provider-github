@@ -21,6 +21,7 @@ func TestAccGithubDependabotSecret(t *testing.T) {
 
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
+			  visibility = "private"
 			}
 
 			data "github_dependabot_public_key" "test_pk" {
@@ -72,6 +73,7 @@ func TestAccGithubDependabotSecret(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
+			  visibility = "private"
 			}
 
 			resource "github_dependabot_secret" "plaintext_secret" {
@@ -162,6 +164,7 @@ func TestAccGithubDependabotSecret(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 			  name = "%s"
+			  visibility = "private"
 			}
 
 			resource "github_dependabot_secret" "plaintext_secret" {
@@ -256,6 +259,7 @@ func TestAccGithubDependabotSecret(t *testing.T) {
 		config := fmt.Sprintf(`
 				resource "github_repository" "test" {
 					name = "tf-acc-test-%s"
+					visibility = "private"
 				}
 
 				resource "github_dependabot_secret" "plaintext_secret" {

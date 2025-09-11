@@ -15,6 +15,7 @@ func TestAccGithubTreeDataSource(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "this" {
 				auto_init = true
+				visibility = "private"
 				name      = "tf-acc-test-%s"
 			}
 

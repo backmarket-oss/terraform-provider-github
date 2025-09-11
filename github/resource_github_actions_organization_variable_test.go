@@ -77,7 +77,7 @@ func TestAccGithubActionsOrganizationVariable(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -92,6 +92,7 @@ func TestAccGithubActionsOrganizationVariable(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name = "tf-acc-test-%s"
+				visibility       = "private"
 			}
 
 			resource "github_actions_organization_variable" "variable" {
@@ -143,7 +144,7 @@ func TestAccGithubActionsOrganizationVariable(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -178,7 +179,7 @@ func TestAccGithubActionsOrganizationVariable(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -222,7 +223,7 @@ func TestAccGithubActionsOrganizationVariable(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {

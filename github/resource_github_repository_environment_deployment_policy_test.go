@@ -23,6 +23,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyBranch(t *testing.T) {
 
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
+				visibility = "private"
 				ignore_vulnerability_alerts_during_read = true
 			}
 
@@ -83,7 +84,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyBranch(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account using free plan not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -108,6 +109,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyBranchUpdate(t *testing.T
 
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
+				visibility = "private"
 				ignore_vulnerability_alerts_during_read = true
 			}
 
@@ -227,7 +229,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyBranchUpdate(t *testing.T
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual with free plan account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -251,6 +253,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyTag(t *testing.T) {
 
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
+				visibility = "private"
 				ignore_vulnerability_alerts_during_read = true
 			}
 
@@ -311,7 +314,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyTag(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual using free plan account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -336,6 +339,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyTagUpdate(t *testing.T) {
 
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
+				visibility = "private"
 				ignore_vulnerability_alerts_during_read = true
 			}
 
@@ -387,6 +391,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyTagUpdate(t *testing.T) {
 
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
+				visibility = "private"
 				ignore_vulnerability_alerts_during_read = true
 			}
 
@@ -455,7 +460,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyTagUpdate(t *testing.T) {
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual using free plan account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -480,6 +485,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyBranchToTagUpdate(t *test
 
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
+				visibility = "private"
 				ignore_vulnerability_alerts_during_read = true
 			}
 
@@ -531,6 +537,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyBranchToTagUpdate(t *test
 
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
+				visibility = "private"
 				ignore_vulnerability_alerts_during_read = true
 			}
 
@@ -599,7 +606,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyBranchToTagUpdate(t *test
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account using free plan not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -624,6 +631,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyTagToBranchUpdate(t *test
 
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
+				visibility = "private"
 				ignore_vulnerability_alerts_during_read = true
 			}
 
@@ -675,6 +683,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyTagToBranchUpdate(t *test
 
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
+				visibility = "private"
 				ignore_vulnerability_alerts_during_read = true
 			}
 
@@ -743,7 +752,7 @@ func TestAccGithubRepositoryEnvironmentDeploymentPolicyTagToBranchUpdate(t *test
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {

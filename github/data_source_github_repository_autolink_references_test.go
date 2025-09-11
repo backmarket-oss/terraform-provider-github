@@ -18,6 +18,7 @@ func TestAccGithubRepositoryAutolinkReferencesDataSource(t *testing.T) {
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%[1]s"
 				auto_init = true
+				visibility = "private"
 			}
 
 			resource "github_repository_autolink_reference" "autolink_default" {

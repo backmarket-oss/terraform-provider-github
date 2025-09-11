@@ -16,6 +16,7 @@ func TestAccGithubIssueLabelsDataSource(t *testing.T) {
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
+				visibility = "private"
 			}
 
 			data "github_issue_labels" "test" {

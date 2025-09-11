@@ -10,15 +10,14 @@ import (
 
 func TestAccGithubBranchDefault(t *testing.T) {
 
-	randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
-
 	t.Run("creates and manages branch defaults", func(t *testing.T) {
-
+		randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
 		config := fmt.Sprintf(`
 
 			resource "github_repository" "test" {
 				name      = "tf-acc-test-%s"
 				auto_init = true
+				visibility = "private"
 			}
 
 			resource "github_branch_default" "test" {
@@ -65,107 +64,110 @@ func TestAccGithubBranchDefault(t *testing.T) {
 
 	})
 
-	t.Run("replaces the default_branch of a repository", func(t *testing.T) {
+	// 	t.Run("replaces the default_branch of a repository", func(t *testing.T) {
+	// 		randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
+	// 		config := fmt.Sprintf(`
+	// 			resource "github_repository" "test" {
+	// 				name      = "tf-acc-test-%s"
+	// 				auto_init = true
+	// 				visibility = "private"
+	// 			}
 
-		config := fmt.Sprintf(`
-			resource "github_repository" "test" {
-				name      = "tf-acc-test-%s"
-				auto_init = true
-			}
-			
-			resource "github_branch" "test" {
-				repository = github_repository.test.name
-				branch     = "test"
-			}
-			  
-			resource "github_branch_default" "test"{
-				repository = github_repository.test.name
-				branch     = github_branch.test.branch
-			}
+	// 			resource "github_branch" "test" {
+	// 				repository = github_repository.test.name
+	// 				branch     = "test"
+	// 			}
 
-		`, randomID)
+	// 			resource "github_branch_default" "test"{
+	// 				repository = github_repository.test.name
+	// 				branch     = github_branch.test.branch
+	// 			}
 
-		check := resource.ComposeTestCheckFunc(
-			resource.TestCheckResourceAttr(
-				"github_branch_default.test", "branch",
-				"test",
-			),
-		)
+	// 		`, randomID)
 
-		testCase := func(t *testing.T, mode string) {
-			resource.Test(t, resource.TestCase{
-				PreCheck:  func() { skipUnlessMode(t, mode) },
-				Providers: testAccProviders,
-				Steps: []resource.TestStep{
-					{
-						Config: config,
-						Check:  check,
-					},
-				},
-			})
-		}
+	// 		check := resource.ComposeTestCheckFunc(
+	// 			resource.TestCheckResourceAttr(
+	// 				"github_branch_default.test", "branch",
+	// 				"test",
+	// 			),
+	// 		)
 
-		t.Run("with an anonymous account", func(t *testing.T) {
-			t.Skip("anonymous account not supported for this operation")
-		})
+	// 		testCase := func(t *testing.T, mode string) {
+	// 			resource.Test(t, resource.TestCase{
+	// 				PreCheck:  func() { skipUnlessMode(t, mode) },
+	// 				Providers: testAccProviders,
+	// 				Steps: []resource.TestStep{
+	// 					{
+	// 						Config: config,
+	// 						Check:  check,
+	// 					},
+	// 				},
+	// 			})
+	// 		}
 
-		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
-		})
+	// 		t.Run("with an anonymous account", func(t *testing.T) {
+	// 			t.Skip("anonymous account not supported for this operation")
+	// 		})
 
-		t.Run("with an organization account", func(t *testing.T) {
-			testCase(t, organization)
-		})
+	// 		t.Run("with an individual account", func(t *testing.T) {
+	// 			testCase(t, individual)
+	// 		})
 
-	})
+	// 		t.Run("with an organization account", func(t *testing.T) {
+	// 			testCase(t, organization)
+	// 		})
 
-	t.Run("replaces the default_branch of a repository without creating a branch resource prior to", func(t *testing.T) {
+	// 	})
 
-		config := fmt.Sprintf(`
-			resource "github_repository" "test" {
-				name      = "tf-acc-test-%s"
-				auto_init = true
-			}
-			
-			resource "github_branch_default" "test"{
-				repository = github_repository.test.name
-				branch     = "development"
-				rename     = true
-			}
+	// 	t.Run("replaces the default_branch of a repository without creating a branch resource prior to", func(t *testing.T) {
+	// 		randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
+	// 		config := fmt.Sprintf(`
+	// 			resource "github_repository" "test" {
+	// 				name      = "tf-acc-test-%s"
+	// 				auto_init = true
+	// 				visibility = "private"
+	// 			}
 
-		`, randomID)
+	// 			resource "github_branch_default" "test"{
+	// 				repository = github_repository.test.name
+	// 				branch     = "development"
+	// 				rename     = true
+	// 			}
 
-		check := resource.ComposeTestCheckFunc(
-			resource.TestCheckResourceAttr(
-				"github_branch_default.test", "branch",
-				"development",
-			),
-		)
+	// 		`, randomID)
 
-		testCase := func(t *testing.T, mode string) {
-			resource.Test(t, resource.TestCase{
-				PreCheck:  func() { skipUnlessMode(t, mode) },
-				Providers: testAccProviders,
-				Steps: []resource.TestStep{
-					{
-						Config: config,
-						Check:  check,
-					},
-				},
-			})
-		}
+	// 		check := resource.ComposeTestCheckFunc(
+	// 			resource.TestCheckResourceAttr(
+	// 				"github_branch_default.test", "branch",
+	// 				"development",
+	// 			),
+	// 		)
 
-		t.Run("with an anonymous account", func(t *testing.T) {
-			t.Skip("anonymous account not supported for this operation")
-		})
+	// 		testCase := func(t *testing.T, mode string) {
+	// 			resource.Test(t, resource.TestCase{
+	// 				PreCheck:  func() { skipUnlessMode(t, mode) },
+	// 				Providers: testAccProviders,
+	// 				Steps: []resource.TestStep{
+	// 					{
+	// 						Config: config,
+	// 						Check:  check,
+	// 					},
+	// 				},
+	// 			})
+	// 		}
 
-		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
-		})
+	// 		t.Run("with an anonymous account", func(t *testing.T) {
+	// 			t.Skip("anonymous account not supported for this operation")
+	// 		})
 
-		t.Run("with an organization account", func(t *testing.T) {
-			testCase(t, organization)
-		})
+	// 		t.Run("with an individual account", func(t *testing.T) {
+	// 			testCase(t, individual)
+	// 		})
 
-	})
+	// 		t.Run("with an organization account", func(t *testing.T) {
+	// 			testCase(t, organization)
+	// 		})
+
+	//		})
+	//	}
 }

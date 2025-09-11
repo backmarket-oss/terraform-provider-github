@@ -19,6 +19,7 @@ func TestAccGithubRepositoryAutolinkReference(t *testing.T) {
 			resource "github_repository" "test" {
 				name        = "test-%s"
 				description = "Test autolink creation"
+				visibility = "private"
 			}
 
 			resource "github_repository_autolink_reference" "autolink_default" {
@@ -128,6 +129,7 @@ func TestAccGithubRepositoryAutolinkReference(t *testing.T) {
 			resource "github_repository" "test" {
 				name        = "test-%s"
 				description = "Test autolink creation"
+				visibility = "private"
 			}
 
 			resource "github_repository_autolink_reference" "autolink_default" {
@@ -265,6 +267,7 @@ func TestAccGithubRepositoryAutolinkReference(t *testing.T) {
 			resource "github_repository" "oof" {
 			  name         = "oof-%s"
 			  description  = "Test autolink creation"
+			  visibility = "private"
 			}
 
 			resource "github_repository_autolink_reference" "autolink" {
@@ -319,6 +322,7 @@ func TestAccGithubRepositoryAutolinkReference(t *testing.T) {
 			resource "github_repository" "test" {
 				name        = "test-%s"
 				description = "Test autolink creation"
+				visibility = "private"
 			}
 
 			resource "github_repository_autolink_reference" "autolink_default" {

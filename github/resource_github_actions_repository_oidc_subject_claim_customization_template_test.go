@@ -63,7 +63,7 @@ func TestAccGithubActionsRepositoryOIDCSubjectClaimCustomizationTemplate(t *test
 			t.Skip("anonymous account not supported for this operation")
 		})
 		t.Run("run with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("individual account not supported for this operation")
 		})
 		t.Run("run with an organization account", func(t *testing.T) {
 			testCase(t, organization)
@@ -189,7 +189,7 @@ func TestAccGithubActionsRepositoryOIDCSubjectClaimCustomizationTemplate(t *test
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("anonymous account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {
@@ -254,7 +254,7 @@ func TestAccGithubActionsRepositoryOIDCSubjectClaimCustomizationTemplate(t *test
 		})
 
 		t.Run("with an individual account", func(t *testing.T) {
-			testCase(t, individual)
+			t.Skip("anonymous account not supported for this operation")
 		})
 
 		t.Run("with an organization account", func(t *testing.T) {

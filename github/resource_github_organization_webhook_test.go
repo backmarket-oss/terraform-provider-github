@@ -19,7 +19,8 @@ func TestAccGithubOrganizationWebhook(t *testing.T) {
 
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
-				auto_init = true
+			  auto_init = true
+			  visibility = "private"
 			}
 
 			resource "github_organization_webhook" "test" {
@@ -87,7 +88,8 @@ func TestAccGithubOrganizationWebhook(t *testing.T) {
 
 			resource "github_repository" "test" {
 			  name = "tf-acc-test-%s"
-				auto_init = true
+			  auto_init = true
+			  visibility = "private"
 			}
 
 			resource "github_organization_webhook" "test" {

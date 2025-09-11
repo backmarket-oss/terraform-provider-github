@@ -23,6 +23,7 @@ func TestAccGithubTeamRepository(t *testing.T) {
 
 			resource "github_repository" "test" {
 				name = "tf-acc-test-%[1]s"
+				visibility = "private"
 			}
 
 			resource "github_team_repository" "test" {
@@ -126,6 +127,7 @@ func TestAccGithubTeamRepository(t *testing.T) {
 
 			resource "github_repository" "test" {
 				name = "tf-acc-test-%[1]s"
+				visibility = "private"
 			}
 
 			resource "github_team_repository" "test" {
