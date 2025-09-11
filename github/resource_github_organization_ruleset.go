@@ -272,7 +272,7 @@ func resourceGithubOrganizationRuleset() *schema.Resource {
 										Type:        schema.TypeBool,
 										Optional:    true,
 										Default:     false,
-										Description: "TODO",
+										Description: "Allow repositories and branches to be created if a check would otherwise prohibit it.",
 									},
 								},
 							},
