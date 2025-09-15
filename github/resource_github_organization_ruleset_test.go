@@ -19,6 +19,12 @@ func TestGithubOrganizationRulesets(t *testing.T) {
 				target      = "branch"
 				enforcement = "active"
 
+				bypass_actors {
+					actor_id = 0
+					actor_type = "OrganizationAdmin"
+					bypass_mode = "exempt"
+				}
+
 				conditions {
 					ref_name {
 						include = ["~ALL"]
