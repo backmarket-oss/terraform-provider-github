@@ -2,16 +2,10 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
-      - release-v*
   pull_request:
-    branches:
-      - main
-      - release-v*
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ${{ github.ref }}
   cancel-in-progress: true
 
 permissions: read-all
@@ -35,6 +29,5 @@ jobs:
           cache: true
       - run: make tools
       - run: make lintcheck
-      - run: make website-lint
       - run: make build
       - run: make test

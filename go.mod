@@ -1,6 +1,6 @@
-module github.com/integrations/terraform-provider-github/v6
+module github.com/backmarket-oss/terraform-provider-github/v6
 
-go 1.24.0
+go 1.25.0
 
 require (
 	github.com/go-jose/go-jose/v3 v3.0.4
