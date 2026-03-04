@@ -42,6 +42,12 @@ func TestGithubRepositoryRulesets(t *testing.T) {
 					bypass_mode = "exempt"
 				}
 
+				bypass_actors {
+					actor_id = 0
+					actor_type = "DeployKey"
+					bypass_mode = "always"
+				}
+
 				conditions {
 					ref_name {
 						include = ["refs/heads/main"]
